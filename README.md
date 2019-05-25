@@ -2,6 +2,8 @@
 ## Introdução
 Esse relatório mostra alguns testes de alocação dinâmica de matrizes. A ideia é testar duas abordagens diferentes, no que se refere ao desempenho e à forma de utilização dessas estruturas de dados. Uma das abordagens é a alocação de matrizes em duas etapas: na primeira etapa ocorre a alocação das linhas (cada linha é um ponteiro para as colunas); e, na segunda etapa, a alocação de cada uma das colunas. A segunda abordagem é a alocação em uma única etapa, alocando toda a matriz em uma única dimensão, como se alocasse um vetor.
 
+**tl;dr** É melhor utilizar [a alocação em uma única etapa](#alocação-em-uma-única-etapa) no seu código.
+
 ### Motivação
 A motivação para estes testes e também para este repositório veio de uma observação a respeito da forma como os estudantes alocavam as matrizes em trabalhos com múltiplos _threads_, na disciplina de Sistemas Operacionais. Como o tamanho das matrizes deveria ser especificado pelo usuário no início da execução do programa, os estudantes tinham que alocar essas matrizes dinamicamente.
 
@@ -128,3 +130,17 @@ Em suma, acredito que a alocação em uma única etapa é mais prática, mais r�
 Esse trabalho não calculou o tempo necessário para desalocar as matrizes (comando ``free``). Entretanto, a sequência de passos é tão complexa quanto a alocação. O programador ainda deve se certificar que todas as dimensões foram de fato liberadas.
 
 Portanto, uma possível extensão desse trabalho são os testes com o processo de desalocação da matriz. Além disso, é possível complementar esse trabalho com matrizes com mais dimensões ou de dimensões maiores.
+
+## Apêndice
+Os códigos dos programas para teste, o arquivo _makefile_ para compilação, o _script_ para executar os testes, além dos dados gerados estão todos disponíveis nesse repositório. O procedimento para realização dos testes foi o seguinte:
+1. Compilamos os programas utilizando o _makefile_.
+2. Executamos o comando a seguir para gerar os arquivos de dados para o programa de alocação em uma única etapa.
+```bash
+for i in 10 100 1000 ; do ./exectestes.sh -p ./matrizesSimplesDinamicas.o -n $i -m $i -i 10 > teste${i}x${i}Simples.dat; done
+```
+3. De forma análoga, executamos o comando a seguir para gerar os arquivos de dados para o programa de alocação em uma duas etapas.
+```bash
+for i in 10 100 1000 ; do ./exectestes.sh -p ./matrizesDuploDinamicas.o -n $i -m $i -i 10 > teste${i}x${i}Duplo.dat; done
+```
+
+Assim, a partir dos dados coletados, geramos os gráficos. 
