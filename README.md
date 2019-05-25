@@ -65,7 +65,11 @@ Pode parecer estranho e deixar o código pouco legível, mas pode acreditar, fun
   valor = matriz[posicao(i, j, numColunas)];
 ```
 
-A passagem dessa matriz como parâmetro para uma função é muito simples e, mais uma vez, não depende da quantidade de dimensões. Veja o exemplo a seguir: `funcao(float *matriz)`.
+A passagem dessa matriz como parâmetro para uma função é muito simples e, mais uma vez, não depende da quantidade de dimensões. Veja o exemplo a seguir: `funcao(float *matriz)`. 
+
+A generalização dessa abordagem para D dimensões, supondo que as dimensões são o conjunto {d<sub>1</sub>, d<sub>2</sub>, ... ,d<sub>n</sub>} também é simples. Na alocação, basta multiplicar as dimensões entre si para calcular o tamanho da matriz. Para acessar a posição P, onde P é formado pelas coordenadas {p<sub>d<sub>1</sub></sub>, p<sub>d<sub>2</sub></sub>, ... ,p<sub>d<sub>n</sub></sub>}, basta calcular p<sub>d<sub>1</sub></sub> x d<sub>2</sub> + p<sub>d<sub>2</sub></sub> x d<sub>3</sub> + ... + p<sub>d<sub>n-1</sub></sub> x d<sub>n</sub> + p<sub>d<sub>n</sub></sub>.
+
+Em um exemplo mais simples, suponha que você tem uma matriz com três dimensões (d<sub>1</sub> = linhas, d<sub>2</sub> = colunas, d<sub>3</sub>  = profundidade) e você quer acessar a matriz nas coordenadas [_i_, _j_ e _k_]. Então, o acesso será feito da seguinte forma ``matriz[i*colunas + j*profundidade + k]``.
 
 ## Testes práticos
 Se os argumentos sobre as [Abordagens](#abordagens) não foram suficientes para convencê-lo, mostro a seguir alguns testes que mostram que a abordagem em uma única etapa é, de fato, bem melhor. A metodologia e os programas utilizados para os teste são bem simples. Vamos à metodologia primeiro.
