@@ -93,8 +93,6 @@ int main(int argc, char *argv[])
   clock_gettime(CLOCK_MONOTONIC, &tend);
   tempoAcesso = calculaTempo(tstart, tend);
 
-  printf("passei aqui\n");
-
 #ifdef CABECA
   printf("Tempo de alocação: %.10f, tempo de leitura: %.10f, tempo de acesso: %.10f\n", 
           tempoAlocacao, tempoLeitura, tempoAcesso);
