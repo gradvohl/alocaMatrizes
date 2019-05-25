@@ -78,7 +78,8 @@ Se os argumentos sobre as [Abordagens](#abordagens) não foram suficientes para 
 A metodologia utilizada foi a seguinte:
 1. Criou-se duas versões de um mesmo programa, com uma única _thread_, cujo algorimo é descrito na seção sobre o [Algoritmo](#algoritmo). Cada versão utiliza uma abordagem diferente, mas o mesmo algoritmo básico.
 2. Realizamos conjuntos de testes para matrizes de 10x10, 100x100 e 1000x1000 em cada abordagem, sempre medindo o tempo de execução em três trechos do programa: na alocação da matriz, na inserção de elementos na matriz e no acesso aos elementos da matriz. 
-3. Comparamos os tempos medidos para 10 execuções de cada programa para cada tamanho de matriz.
+3. Cada programa é executado 10 vezes e seus resultados coletados. É calculada uma média dos tempos das 10 execuções.
+4. Comparamos os tempos médios de cada programa para cada tamanho de matriz.
 
 Para deixar todo o processo o mais automatizado possível, foram criados _scripts_ para automatizar os testes. Basicamente, o _script_ vai rodar executar o programa indicado várias vezes e, entre uma vez e outra, espera um tempo aleatório (1, 2 ou 3 segundos) para tentar evitar otimizações do Sistema Operacional em relação à alocação de memória.
 
