@@ -93,7 +93,38 @@ O algoritmo que o programa vai executar é simples e se resume aos seguintes pas
 Entre cada passo, calcula-se o tempo que aquela etapa consumiu. Para evitar a utilização de dispositivos de entrada e saída (E/S), no passo 2, os elementos inseridos na matriz são valores zero ou um, gerados aleatoriamente.
 
 ## Resultados
-Os resultados são mostrados nas tabelas e gráficos a seguir. A primeira figura mostra o gráfico de alocação das matrizes, que é o trecho que mais consome tempo na primeira abordagem.
+Os resultados são mostrados nas tabelas e gráficos a seguir. A primeira figura mostra o gráfico de alocação das matrizes, que é o trecho que mais consome tempo na primeira abordagem. Neste e nos demais gráficos, o eixo x mostra o tempo gasto (em segundos) em cada operação. No eixo y estão os tamanhos das matrizes (10 x 10, 100 x 100 e 1000 x 1000).
 
 ![Alocação de Matriz](https://github.com/gradvohl/alocaMatrizes/blob/master/Alocacao.png).
 
+Observe que, conforme discutimos previamente, na alocação em duas etapas, o tempo de alocação de uma matriz cresce quando o tamanho das dimensões cresce. Na alocação em uma única etapa, esse tempo sofre poucas variações. Algo interessante de notar é na alocação de matrizes pequenas (10 x 10). O tempo médio da alocação em duas etapas foi menor. No entanto, se considerarmos o desvio padrão os tempos se equivalem. A propósito, quando as matrizes têm grandes dimensões (1000 x 1000), a diferença é bastante significativa, da ordem de 45 vezes mais lenta.
+
+Vejamos o gráfico das operações de inserção. Aqui há outra surpresa que discutiremos na seção [Discussões](#discussões).
+
+![Inserção na Matriz](https://github.com/gradvohl/alocaMatrizes/blob/master/Insercao.png).
+
+Nesse caso, a inserção simples foi mais lenta em todas as dimensões de matrizes, cerca de 20% mais lenta. É pouco, mas é significativo.
+
+Finalmente, vejamos o gráfico das operações de acesso. Nesse caso, os tempos de acesso da alocação em duas etapas são maiores, quando as matrizes são maiores; mas são menores quando são matrizes são menores.
+
+![Acesso à Matriz](https://github.com/gradvohl/alocaMatrizes/blob/master/Acesso.png).
+
+As diferenças de tempo são tão sutis quanto no caso da inserção, com vantagens para a alocação em uma etapa.
+
+## Discussões
+Nesta seção, discute-se os resultados dos testes. Como se observa nos gráficos, a alocação é um processo extremamente demorado  e isso tende a ficar pior na alocação em _D_ etapas, quanto maior for o número de dimensões. 
+
+Já as operações de inserção e acesso têm diferenças menores entre ambas as abordagens, como se esperava. Provavelmente, se compilarmos os códigos com otimizações essas diferenças diminuirão.
+
+## Conclusões e extensões desse trabalho
+Ponderando todos os aspectos analisados, concluímos o seguinte:
+1. A alocação em _D_ etapas implica em um código maior (em números de linhas) e mais complexo no que se refere à quantidade de iterações para criar a matriz. No entanto, isso favorece um pouco mais a legibilidade do código.
+
+2. A alocação em única etapa, por sua vez, deixa o código menos complexo e mais rápido no trecho em que a matriz é alocada. Entretanto, não há benefícios significativos na leitura ou armazenamento de dados na matriz. 
+
+Em suma, acredito que a alocação em uma única etapa é mais prática, mais rápida e no cômputo geral apresenta resultados melhores do que a alocação em _D_ etapas.
+
+### Novos testes e extensões desse trabalho
+Esse trabalho não calculou o tempo necessário para desalocar as matrizes (comando ``free``). Entretanto, a sequência de passos é tão complexa quanto a alocação. O programador ainda deve se certificar que todas as dimensões foram de fato liberadas.
+
+Portanto, uma possível extensão desse trabalho são os testes com o processo de desalocação da matriz. Além disso, é possível complementar esse trabalho com matrizes com mais dimensões ou de dimensões maiores.
