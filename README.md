@@ -7,7 +7,7 @@ A motivação para estes testes e também para este repositório veio de uma obs
 
 Sendo assim, notei que a maioria deles usava a abordagem em duas etapas. Isso me incomodava muito, pois a abordagem em uma única etapa me parecia muito mais prática e mais rápida. Por esse motivo, resolvi fazer alguns testes e apresentar os resultados para demonstrar que a segunda abordagem é, de fato, mais eficiente. Além disso, ao registrar os métodos e resultados, espero esclarecer as dúvidas dos estudantes e ajudá-los a escrever um código mais rápido.
 
-## As abordagens
+## Abordagens
 Conforme comentei na [Introdução](#introdução), há duas abordagens para alocação de matrizes em D dimensões. Vamos considerar _D_=2, por simplicidade, mas depois podemos generalizar. Consideraremos também que, para D=2, a matriz alocada terá _n_ linhas (_numLinhas_) e _m_ colunas (_numColunas_).
 
 ### Alocação em _D_ etapas
@@ -59,7 +59,7 @@ Neste momento aparece um aspecto um pouco negativo dessa abordagem: a forma de a
 Pode parecer estranho e deixar o código pouco legível, mas pode acreditar, funciona. E funciona um pouco melhor se as variáveis _i_, _j_ e _numColunas_ forem registradores, ao invés de variáveis alocadas na memória. O programador mais experiente na linugagem C pode inclusive criar uma definição (`#define`) para tornar o código mais legível. Por exemplo:
 
 ```c
-#define posicao(I, J, COLUNAS) ((I*COLUNAS) + J)
+#define posicao(I, J, COLUNAS) ((I)*(COLUNAS) + (J))
 ...
    // Acesso à matriz
   valor = matriz[posicao(i, j, numColunas)];
@@ -67,3 +67,25 @@ Pode parecer estranho e deixar o código pouco legível, mas pode acreditar, fun
 
 A passagem dessa matriz como parâmetro para uma função é muito simples e, mais uma vez, não depende da quantidade de dimensões. Veja o exemplo a seguir: `funcao(float *matriz)`.
 
+## Testes práticos
+Se os argumentos sobre as [Abordagens](#abordagens) não foram suficientes para convencê-lo, mostro a seguir alguns testes que mostram que a abordagem em uma única etapa é, de fato, bem melhor. A metodologia e os programas utilizados para os teste são bem simples. Vamos à metodologia primeiro.
+
+### Metodologia
+A metodologia utilizada foi a seguinte:
+1. Criou-se duas versões de um mesmo programa, com uma única _thread_, cujo algorimo é descrito na seção sobre o [Algoritmo](#algoritmo). Cada versão utiliza uma abordagem diferente, mas o mesmo algoritmo básico.
+2. Realizamos conjuntos de testes para matrizes de 10x10, 100x100 e 1000x1000 em cada abordagem, sempre medindo o tempo de execução em três trechos do programa: na alocação da matriz, na inserção de elementos na matriz e no acesso aos elementos da matriz. 
+3. Comparamos os tempos medidos para 10 execuções de cada programa para cada tamanho de matriz.
+
+Para deixar todo o processo o mais automatizado possível, foram criados _scripts_ para automatizar os testes. Basicamente, o _script_ vai rodar executar o programa indicado várias vezes e, entre uma vez e outra, espera um tempo aleatório (1, 2 ou 3 segundos) para tentar evitar otimizações do Sistema Operacional em relação à alocação de memória.
+
+### Algoritmo
+O algoritmo que o programa vai executar é simples e se resume aos seguintes passos:
+1. Aloca a matriz;
+2. Insere elementos na matriz;
+3. Lê os elementos da matriz.
+4. Imprime os tempos de cada etapa de processamento.
+
+Entre cada passo, calcula-se o tempo que aquela etapa consumiu. Para evitar a utilização de dispositivos de entrada e saída (E/S), no passo 2, os elementos inseridos na matriz são valores zero ou um, gerados aleatoriamente.
+
+## Resultados
+Os resultados são mostrados nas tabelas e gráficos a seguir.
