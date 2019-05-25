@@ -93,4 +93,7 @@ O algoritmo que o programa vai executar é simples e se resume aos seguintes pas
 Entre cada passo, calcula-se o tempo que aquela etapa consumiu. Para evitar a utilização de dispositivos de entrada e saída (E/S), no passo 2, os elementos inseridos na matriz são valores zero ou um, gerados aleatoriamente.
 
 ## Resultados
-Os resultados são mostrados nas tabelas e gráficos a seguir.
+Os resultados são mostrados nas tabelas e gráficos a seguir. A primeira figura mostra o gráfico de alocação das matrizes, que é o trecho que mais consome tempo na primeira abordagem.
+
+![Alocação de Matriz](https://github.com/gradvohl/alocaMatrizes/blob/master/Alocacao.png).
+
