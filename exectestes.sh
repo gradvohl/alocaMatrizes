@@ -46,11 +46,15 @@ while [[ $# -gt 0 ]]; do
 done
 
 for ((c=0; c<${ITERACOES}; c++)); do
+# Executa o programa especificado, com os respectivos parametros.
  ${PROG} ${N} ${M}
+
+# Se for a ultima iteracao, sai do laco.
  if [ ${c} -eq $((ITERACOES - 1)) ]; then
          break
  fi
- TEMPO=$((1 + RANDOM % 3))
- sleep ${TEMPO}
+# Senao, espera um tempo aleatorio (1, 2 ou 3s) antes da proxima iteracao.
+ sleep $((1 + RANDOM % 3))
 done
+
 exit 0
