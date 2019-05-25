@@ -97,19 +97,19 @@ Entre cada passo, calcula-se o tempo que aquela etapa consumiu. Para evitar a ut
 ## Resultados
 Os resultados são mostrados nas tabelas e gráficos a seguir. A primeira figura mostra o gráfico de alocação das matrizes, que é o trecho que mais consome tempo na primeira abordagem. Neste e nos demais gráficos, o eixo x mostra o tempo gasto (em segundos) em cada operação. No eixo y estão os tamanhos das matrizes (10 x 10, 100 x 100 e 1000 x 1000).
 
-![Alocação de Matriz](https://github.com/gradvohl/alocaMatrizes/blob/master/Alocacao.png).
+![Alocação de Matriz](https://raw.githubusercontent.com/gradvohl/alocaMatrizes/master/Alocacao.png).
 
 Observe que, conforme discutimos previamente, na alocação em duas etapas, o tempo de alocação de uma matriz cresce quando o tamanho das dimensões cresce. Na alocação em uma única etapa, esse tempo sofre poucas variações. Algo interessante de notar é na alocação de matrizes pequenas (10 x 10). O tempo médio da alocação em duas etapas foi menor. No entanto, se considerarmos o desvio padrão os tempos se equivalem. A propósito, quando as matrizes têm grandes dimensões (1000 x 1000), a diferença é bastante significativa, da ordem de 45 vezes mais lenta.
 
 Vejamos o gráfico das operações de inserção. Aqui há outra surpresa que discutiremos na seção [Discussões](#discussões).
 
-![Inserção na Matriz](https://github.com/gradvohl/alocaMatrizes/blob/master/Insercao.png).
+![Inserção na Matriz](https://raw.githubusercontent.com/gradvohl/alocaMatrizes/master/Insercao.png).
 
 Nesse caso, a inserção simples foi mais lenta em todas as dimensões de matrizes, cerca de 20% mais lenta. É pouco, mas é significativo.
 
 Finalmente, vejamos o gráfico das operações de acesso. Nesse caso, os tempos de acesso da alocação em duas etapas são maiores, quando as matrizes são maiores; mas são menores quando são matrizes são menores.
 
-![Acesso à Matriz](https://github.com/gradvohl/alocaMatrizes/blob/master/Acesso.png).
+![Acesso à Matriz](https://raw.githubusercontent.com/gradvohl/alocaMatrizes/master/Acesso.png).
 
 As diferenças de tempo são tão sutis quanto no caso da inserção, com vantagens para a alocação em uma etapa.
 
